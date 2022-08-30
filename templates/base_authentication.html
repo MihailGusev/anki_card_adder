@@ -1,0 +1,37 @@
+<!-- Base template for login and registration page with a 'user_form' block for login/registration -->
+{% extends "./base.html" %}
+{% load static %}
+
+{% block body %}
+<main class="container py-5">
+  <div class="row justify-content-center">
+    <div class="col-md-10 col-lg-8 col-xl-6">
+      <div class="card rounded-4 overflow-hidden bg-light">
+        <div class="row">
+
+          <section class="col p-4">
+            <div class="text-center">
+              <img class="authentication-image" src="{% static 'images/anki.png' %}" alt="Anki">
+              <h4 class="mb-3">Anki Word Adder</h4>
+            </div>
+
+            {% block user_form %}
+            {% endblock %}
+          </section>
+
+          <section class="col p-4 d-flex align-items-center gradient">
+            <div class="text-white">
+              <h4>Better way of learning words</h4>
+              <p class="small mt-4">
+                Anki Word Adder leverages the power of Anki and multiple APIs
+                to help you learn new words faster and with much less manual work!
+                Read the <a href="{% url 'guide' %}" class="link-secondary">guide</a> before you start
+              </p>
+            </div>
+          </section>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+{% endblock %}

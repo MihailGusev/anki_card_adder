@@ -1,0 +1,128 @@
+{% extends "./base_navbar.html" %}
+{% load static %}
+
+{% block head %}
+<!-- Pass user information into javascript -->
+{{ learner_settings|json_script:"learner-settings"}}
+
+<link rel="stylesheet" href="{% static 'css/floating_label_fix.css' %}" />
+<script defer src="{% static 'js/main.js' %}" type="module"></script>
+{% endblock %}
+
+
+{% block content %}
+<!-- Show when deck-id for the user couldn't be found in anki's decks -->
+<div class="hidden" id="deck-selection-controls">
+  <div class="input-group">
+    <label class="input-group-text" for="deck-select">Select a deck which will store your new cards</label>
+    <select class="form-select" id="deck-select"></select>
+    <button class="btn btn-primary" id="submit-deck-id">Select</button>
+  </div>
+</div>
+
+
+<!-- When everything is OK - show main controls -->
+<div id="card-adding-controls" class="hidden">
+  <div class="form-floating my-2">
+    <input class="form-control" id="word-field" type="text" placeholder="Word">
+    <label for="word-field">Word</label>
+  </div>
+
+  <div class="form-floating my-2">
+    <textarea class="form-control context-text-area" id="context" placeholder="Context"></textarea>
+    <label for="context">Context</label>
+  </div>
+
+  <!-- Translation table -->
+  <div class="card container my-2">
+    <div class="card-header row">
+      <div class="col">
+        <h5>Translations</h5>
+      </div>
+      <div class="col-md-5 col-lg-4 col-xl-3">
+        <div class="text-end">
+          <select class="form-select" id="frequency-filter-select">
+            <option value="1">All</option>
+            <option value="2">Common and uncommon</option>
+            <option value="3">Only common</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <div class="card-body">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Part of speech</th>
+            <th scope="col">Translation</th>
+            <th scope="col">Reverse translations</th>
+            <th scope="col">Frequency</th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody id="translation-table-body">
+          <!-- Rows are inserted from JS-->
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Definition table -->
+  <div class="card container my-2">
+    <div class="card-header row">
+      <div class="col">
+        <h5>Definitions</h5>
+      </div>
+      <div class="col">
+        <div class="text-end">
+          <input class="form-check-input" type="checkbox" id="show-google-definitions">
+          <label class="form-check-label" for="show-google-definitions">Google</label>
+
+          <input class="form-check-input" type="checkbox" id="show-collins-definitions">
+          <label class="form-check-label" for="show-collins-definitions">Collins</label>
+        </div>
+      </div>
+    </div>
+
+    <div class="card-body">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Part of speech</th>
+            <th scope="col">Definition</th>
+            <th scope="col">Examples</th>
+            <th scope="col">Synonyms</th>
+            <th scope="col">Tags</th>
+            <th scope="col">Source</th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody id="definition-table-body">
+          <!-- Rows are inserted from JS-->
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Buttons and links -->
+  <div class="row my-2">
+    <div class="col">
+      <button class="btn btn-primary" id="get-info-button" type="button" disabled>
+        Get information
+      </button>
+      <button class="btn btn-primary" id="create-card-button" type="button" disabled>Create card</button>
+    </div>
+
+    <div class="col-5 text-end">
+      <a id="google-link" target="_blank">Google</a>
+      <a id="collins-link" target="_blank">Collins</a>
+      <a id="cambridge-link" target="_blank">Cambridge</a>
+      <a id="oxford-link" target="_blank">Oxford</a>
+    </div>
+  </div>
+
+</div>
+{% endblock %}

@@ -1,0 +1,29 @@
+{% extends "./base_authentication.html" %}
+
+{% block title %}
+Login
+{% endblock %}
+
+{% block user_form %}
+<form method="post">
+  {% csrf_token %}
+
+  {{ form.non_field_errors }}
+
+  {% for field in form %}
+  <div class="form-floating p-2">
+    {{ field }}
+    {{ field.label_tag }}
+  </div>
+  {{ field.errors }}
+  {% endfor %}
+
+  <div class="p-2">
+    <input class="btn btn-primary btn-lg w-100 gradient" id="submit" type="submit" value="Login">
+  </div>
+</form>
+
+<div class="text-center mt-3">
+  New user? <a href="{% url 'accounts:register' %}">Register</a>
+</div>
+{% endblock %}

@@ -1,0 +1,98 @@
+{% extends "./base_navbar.html" %}
+{% load static %}
+
+{% block title %}
+Guide
+{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+  <div class="col-md-12 col-lg-11 col-xl-10">
+    <section>
+      <h4>What is Anki?</h4>
+      <p>
+        If you do not know what Anki is, <a href="https://apps.ankiweb.net/" target="_blank">check it out</a> first.
+        In short, Anki is a program that uses a special technique to help you remember information.
+      </p>
+    </section>
+
+    <section>
+      <h4>What is Anki Word Adder?</h4>
+      <p>
+        Anki Word Adder (AWA) connects to your Anki application and allows you to create cards for
+        learning new words in a couple of clicks. Card example:
+        <img class="card-image" src="{% static 'images/card_example.png' %}" alt="Card example">
+      </p>
+    </section>
+
+    <section>
+      <h4>Limitations</h4>
+      AWA is a fresh project, so it has some limitations that may be removed later on:
+      <ul>
+        <li>AWA <b>cannot be used on mobile devices</b>, because it depends on AnkiConnect add-on and add-ons
+          are only available on Windows, Mac and Linux.</li>
+        <li>AWA may be <b>unavailable at the end of each month</b>, because of the free hosting time limit</li>
+        <li>AWA <b>can only create cards for English words</b>. If you want support for other languages,
+          you may send feedback after registration</li>
+      </ul>
+    </section>
+
+    <section>
+      <h4>How to use AWA</h4>
+      <div class="mx-3">
+        <h6>Setup</h6>
+
+        <ol>
+          <li>
+            Install <a href="https://apps.ankiweb.net/" target="_blank">Anki</a>
+          </li>
+
+          <li>
+            Install <a href="https://ankiweb.net/shared/info/2055492159">AnkiConnect</a> addon.
+            It allows AWA to communicate with Anki
+            <br />
+            <ol>
+              <li>In your Anki application go to the 'Tools' menu</li>
+              <li>Click 'Add-ons'</li>
+              <li>In the opened window click 'Get Add-ons'</li>
+              <li>Copy and paste '2055492159' (without quotes) inside the 'code' field and click 'OK'</li>
+              <li>Restart Anki</li>
+            </ol>
+          </li>
+
+          <li>
+            Open AWA
+            <br />
+            <ol>
+              <li>Anki will ask you to allow access to it. Click 'Yes'.</li>
+              <li>In AWA choose a deck, where your AWA cards will be stored and click 'Select'</li>
+            </ol>
+          </li>
+        </ol>
+
+        <h6>Usage</h6>
+        <ol>
+          <li>Type English word inside 'Word' field</li>
+          <li>Put the context in which the word was found inside the 'Context' field
+            (for example a sentence in a book you're reading). You can skip it, but
+            I highly recommend not to do it because
+            adding your unique context to the word helps to remember it
+          </li>
+          <li>Click 'Get information' button (or press enter inside the 'Word' field) and wait until translations
+            and other information is downloaded</li>
+          <li>Click 'Create card' button</li>
+        </ol>
+
+        <h6>Changing the style of the cards</h6>
+        If you're an experienced user, you may want to change the look of the cards by
+        <a href="https://docs.ankiweb.net/templates/styling.html">changing</a>
+        the templates for front and back sides of the card as well as additional styling.
+        The one thing you better <b>not to do</b> is changing field names or deleting them. AWA
+        creates a new note type if it cannot find all the fields it needs.
+      </div>
+
+    </section>
+  </div>
+</div>
+
+{% endblock %}

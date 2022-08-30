@@ -1,0 +1,35 @@
+{% extends "./base_navbar.html" %}
+{% load static %}
+
+{% block title %}
+Settings
+{% endblock %}
+
+{% block head %}
+<!-- Pass settings into javascript -->
+{{ settings|json_script:"settings"}}
+<script defer src="{% static 'js/settings.js' %}" type="module"></script>
+{% endblock %}
+
+{% block content %}
+<div class="col-md-6 col-lg-5 col-xl-4">
+  <div class="input-group my-2">
+    <label class="input-group-text" for="select-language">Translate English to</label>
+    <select class="form-select" id="select-language"></select>
+  </div>
+
+  <div class="input-group my-2">
+    <label class="input-group-text" for="select-deck">Put cards into</label>
+    <select class="form-select" id="select-deck"></select>
+  </div>
+
+  <div class="my-2">
+    <input class="form-check-input" id="show-message-on-card-addition" type="checkbox">
+    <label for="show-message-on-card-addition">Show message when card is added to Anki</label>
+  </div>
+
+  <button class="btn col-12 btn-primary my-1" id="button-save">Save</button>
+
+</div>
+
+{% endblock %}

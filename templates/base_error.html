@@ -1,0 +1,31 @@
+{% extends "./base_navbar.html" %}
+{% load static %}
+
+
+{% block title %}
+Ooops
+{% endblock %}
+
+{% block head %}
+<script defer src="{% static 'js/homer_eyes.js' %}" type="module"></script>
+{% endblock %}
+
+{% block content %}
+<div class="row">
+  <div class="col d-flex flex-column justify-content-center align-items-center">
+    <p class="display-6">
+      Ooops, something went wrong. <br>
+      Error code: {% block error %} {% endblock %}. <br>
+      You can send feedback and I'll try to fix it
+    </p>
+  </div>
+
+  <div class="col-auto">
+    <img src="{% static 'images/homer_thinking.png' %}" id="homer" alt="Homer">
+    <img class="eye" src="{% static 'images/eye.png' %}" alt="Eye"
+      style="position: relative; top: -90px; left: -238px; width: 40px;">
+    <img class="eye" src="{% static 'images/eye.png' %}" alt="Eye"
+      style="position: relative; top: -93px; left: -201px; width: 40px;">
+  </div>
+</div>
+{% endblock %}

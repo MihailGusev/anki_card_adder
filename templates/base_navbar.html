@@ -1,0 +1,102 @@
+<!-- Adds top and bottom navbars to the base template and defines 'content' block -->
+{% extends "./base.html" %}
+{% load static %}
+
+{% block body %}
+
+<!-- Top navbar -->
+<nav class="navbar fixed-top navbar-dark bg-dark">
+  <div class="container">
+    <div class="col">
+      <a class="navbar-brand" href="{% url 'main' %}">
+        <img class="d-inline-block" src="{% static 'images/anki.png' %}" width="30" height="30" alt="Anki">
+        <b>Anki word adder</b>
+      </a>
+      <a class="nav-link-top" href="{% url 'guide' %}">Guide</a>
+      <a class="nav-link-top mx-2" href="{% url 'versions' %}">What's new</a>
+    </div>
+
+    {% if user.is_authenticated %}
+    <div class="nav-item dropdown">
+      <button class="btn btn-secondary gradient" id="profileDropdown" role="button" data-bs-toggle="dropdown"
+        aria-haspopup="true" aria-expanded="false">
+        {{user.username.0}}
+      </button>
+      <div class="dropdown-menu" aria-labelledby="profileDropdown">
+        <h6 class="dropdown-header">{{user.username}}</h6>
+        <div class="dropdown-divider"></div>
+        <a class="dropdown-item" href="{% url 'accounts:settings' %}">Settings</a>
+        <a class="dropdown-item" href="{% url 'accounts:logout' %}">Logout</a>
+      </div>
+    </div>
+    {% endif %}
+  </div>
+</nav>
+
+<!-- Main content -->
+<div class="container my-3 py-5">
+  <div id="message-container">
+    <!-- Messages may come from backend -->
+    {% if messages %}
+    {% for message in messages %}
+    <div class="alert alert-info alert-dismissible fade show" role="alert">
+      {{message}}
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    {% endfor %}
+    {% endif %}
+  </div>
+  <main>
+    {% block content %}{% endblock %}
+  </main>
+</div>
+
+<!-- Feedback modal -->
+{% if user.is_authenticated %}
+<div class="modal fade" id="feedback-modal" tabindex="-1" role="dialog" aria-labelledby="feedback-modal-label"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="feedback-modal-label">Feedback</h5>
+      </div>
+      <div class="modal-body">
+        <p>
+          Please, tell about your expirience with AWA (things that you like or dislike so far, or features you want
+          to see in the future). Leave your email if you need a reply.
+        </p>
+        <textarea class="form-control" id="feedback-area" rows="5"></textarea>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary" type="button" data-bs-dismiss="modal">Close</button>
+        <button class="btn btn-primary" id="send-button" data-bs-dismiss="modal" type="submit" disabled>Send</button>
+      </div>
+    </div>
+  </div>
+</div>
+{% endif %}
+
+<!-- Bottom navbar -->
+<nav class="navbar fixed-bottom navbar-dark bg-dark">
+  <div class="container">
+    <div>
+
+      <a class="hvr-float" href="https://github.com/MihailGusev/anki_word_adder" target="_blank" title="Source code">
+        <img class="nav-icon-bottom" src="{% static 'images/github.png' %}" alt="GitHub">
+      </a>
+
+      {% if user.is_authenticated %}
+      <input class="hvr-float nav-icon-bottom" type="image" src="{% static 'images/message.png' %}"
+        data-bs-toggle="modal" data-bs-target="#feedback-modal" title="Send feedback">
+      </input>
+      {% endif %}
+    </div>
+  </div>
+</nav>
+
+<!-- Script to enable/disable 'Send feedback button' -->
+{% if user.is_authenticated %}
+<script src="{% static 'js/feedback.js' %}" type="module"></script>
+{% endif %}
+
+{% endblock %}
