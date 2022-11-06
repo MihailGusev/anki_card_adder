@@ -1,0 +1,57 @@
+.hidden {
+  display: none;
+}
+
+.gradient {
+  background: linear-gradient(to right, #4275cc80, #0b3c9c80);
+}
+
+.card-image {
+  max-width: 100%;
+  max-height: 100vh;
+  margin: auto;
+}
+
+.authentication-image {
+  width: 180px;
+}
+
+.context-text-area {
+  height: 80px;
+}
+
+a.nav-link-top {
+  text-decoration: none;
+  color: gainsboro;
+  font-size: large;
+}
+
+a.nav-link-top:hover {
+  color: gray;
+}
+
+.nav-icon-bottom {
+  width: 30px;
+  height: 30px;
+}
+
+.hvr-float {
+  display: inline-block;
+  vertical-align: middle;
+  -webkit-transform: perspective(1px) translateZ(0);
+  transform: perspective(1px) translateZ(0);
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+  -webkit-transition-property: transform;
+  transition-property: transform;
+  -webkit-transition-timing-function: ease-out;
+  transition-timing-function: ease-out;
+}
+
+.hvr-float:hover,
+.hvr-float:focus,
+.hvr-float:active {
+  -webkit-transform: translateY(-8px);
+  transform: translateY(-8px);
+}

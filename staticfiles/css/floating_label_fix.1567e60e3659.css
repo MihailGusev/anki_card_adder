@@ -1,0 +1,27 @@
+/* Bootstrap 5 floating label for a textarea overlaps with input on scroll */
+
+.form-floating {
+    position: relative;
+}
+
+.form-floating:before {
+    content: '';
+    position: absolute;
+    top: 1px;
+    /* border-width (default by BS) */
+    left: 1px;
+    /* border-width (default by BS) */
+    width: calc(100% - 24px);
+    /* to show scrollbar */
+    height: 25px;
+    border-radius: 4px;
+    /* (default by BS) */
+    background-color: #ffffff;
+}
+
+.form-floating textarea.form-control {
+    padding-top: 32px;
+    /* height of pseudo element */
+    min-height: 80px;
+    /* not relevant */
+}

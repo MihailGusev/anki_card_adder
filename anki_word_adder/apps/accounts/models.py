@@ -56,7 +56,7 @@ class Settings(models.Model):
     translation_filter = models.IntegerField(choices=TranslationFilter.choices, default=TranslationFilter.NO)
 
     add_collins_definitions = models.BooleanField(default=True)  # add collins definitions to card if true
-    add_google_definitions = models.BooleanField(default=True)  # add google definitions to card if true
+    add_google_definitions = models.BooleanField(default=True)   # add google definitions to card if true
 
     show_message_on_card_addition = models.BooleanField(default=True)  # show success message when card is added if true
 
