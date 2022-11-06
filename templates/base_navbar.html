@@ -7,13 +7,13 @@
 <!-- Top navbar -->
 <nav class="navbar fixed-top navbar-dark bg-dark">
   <div class="container">
-    <div class="col">
+    <div>
       <a class="navbar-brand" href="{% url 'main' %}">
-        <img class="d-inline-block" src="{% static 'images/anki.png' %}" width="30" height="30" alt="Anki">
-        <b>Anki word adder</b>
+        <img class="nav-image" src="{% static 'images/anki.png' %}" height="30" alt="Anki">
+        <img class="nav-image" src="{% static 'images/AWA.png' %}" height="30" alt="AWA">
       </a>
       <a class="nav-link-top" href="{% url 'guide' %}">Guide</a>
-      <a class="nav-link-top mx-2" href="{% url 'versions' %}">What's new</a>
+      <a class="nav-link-top m-2" href="{% url 'versions' %}">What's new</a>
     </div>
 
     {% if user.is_authenticated %}

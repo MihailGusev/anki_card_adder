@@ -6,6 +6,7 @@ import sys
 
 def main():
     """Run administrative tasks."""
+    # os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'anki_word_adder.settings.development')
     os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'anki_word_adder.settings.production')
     try:
         from django.core.management import execute_from_command_line

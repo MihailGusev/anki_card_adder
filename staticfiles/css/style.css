@@ -20,6 +20,10 @@
   height: 80px;
 }
 
+.nav-image {
+  margin-bottom: 3px;
+}
+
 a.nav-link-top {
   text-decoration: none;
   color: gainsboro;
