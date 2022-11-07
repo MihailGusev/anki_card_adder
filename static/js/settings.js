@@ -2,6 +2,10 @@ import { getDeckNamesAndIds } from "./main_anki_actions.js";
 import { updateLearnerSettings } from './helpers.js';
 
 async function setup() {
+    const deckNamesAndIds = await getDeckNamesAndIds();
+    // If we got here, then there's no exceptions and we can show settings
+    document.getElementById('settings-container').classList.remove('hidden');
+
     const settings = JSON.parse(document.getElementById('settings').textContent);
 
     const languageSelector = document.getElementById('select-language');
@@ -18,7 +22,7 @@ async function setup() {
     });
 
     const deckSelector = document.getElementById('select-deck');
-    const deckNamesAndIds = await getDeckNamesAndIds();
+
     // Fill deck selector
     for (const [key, value] of Object.entries(deckNamesAndIds)) {
         const opt = document.createElement('option');
