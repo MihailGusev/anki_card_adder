@@ -215,7 +215,7 @@ async function invoke(action, params = {}) {
         .catch(err => {
             // If something went wrong, then AnkiConnect server is likely to be offline
             InterfaceManager.showError(`Unable to connect to Anki. Make sure that Anki is opened,
-            AnkiConnect add-on is installed and reload the page.`);
+            AnkiConnect add-on is installed and reload the page. Read the <a href='/guide'>Guide</a> if you haven't yet.`);
             throw err;
         })
         .then(result => {
